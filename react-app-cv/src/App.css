@@ -48,3 +48,11 @@
 .ed-item span {
   font-weight: bold;
 }
+
+/* counter */
+.counter-container {
+  width: 200px;
+  border: 2px solid black;
+  margin-bottom: 50px;
+  padding: 10px;
+}
