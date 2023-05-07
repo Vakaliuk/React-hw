@@ -4,7 +4,7 @@
 
 
 .container {
-  margin: 25px 0 0 50px
+  margin: 25px 0 0 50px;
 }
 
 .ihor-photo-1 {
@@ -24,6 +24,10 @@
   margin-top: 5px;
 }
 
+.contact-list {
+  padding-left: 0;
+}
+
 .contact-item {
   margin: 20px;
 }
@@ -37,11 +41,16 @@
   gap: 200px;
 }
 
+.ed-list {
+  padding-left: 20px;
+}
+
 .ed-item {
   margin-bottom: 30px;
 }
 
 .ed-item p {
+  font-size: 1.17em;
   margin: 5px;
 }
 
@@ -55,4 +64,33 @@
   border: 2px solid black;
   margin-bottom: 50px;
   padding: 10px;
+}
+
+.form {
+  padding-left: 40px;
+  display: block;
+}
+
+.form input {
+  width: 500px;
+  height: 30px;
+
+}
+
+.repos-list {
+  padding-left: 20px;
+}
+
+.repo-item {
+  margin-bottom: 20px;
+}
+
+.repo-item a {
+  font-weight: bold;
+  font-size: 1.17em;
+}
+
+.repo-item p {
+  margin: 0;
+  color: gray;
 }

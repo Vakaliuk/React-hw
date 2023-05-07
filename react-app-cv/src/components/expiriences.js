@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Expirience } from './expirience';
 import { Form2 } from './formV2';
 
-export function RenderExp() {
+export function Expiriences() {
   const [allPlaceOfExp, setAllPlaceOfExp] = useState([
     {
       name: 'Vinnytsia National Agrarian University',
@@ -24,7 +24,7 @@ export function RenderExp() {
     setAllPlaceOfExp([...allPlaceOfExp, newPlace]);
   }
 
-  function iteration() {
+  function renderPlace() {
     return allPlaceOfExp.map((item) => {
       return (
         <Expirience
@@ -41,7 +41,7 @@ export function RenderExp() {
 
   return (
     <>
-      {iteration()}
+      {renderPlace()}
       <Form2 onAddPlace={addNewPlace} />
     </>
   );
