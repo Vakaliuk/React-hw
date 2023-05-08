@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 export function Repos() {
   const [repos, setRepos] = useState([]);
+  const token = undefined;
 
   useEffect(() => {
     const headers = {
-      Authorization: `Bearer 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`,
+      Authorization: `Bearer ${token}`,
     };
 
     fetch('https://api.github.com/users/Vakaliuk/repos', {
