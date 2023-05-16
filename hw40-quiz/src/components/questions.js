@@ -1,28 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { QuestAnswContext } from '../context/index.js';
 
 export default function Questions() {
-  const questions = [
-    {
-      question: 'The capital of Great Britain?',
-      options: ['Paris', 'Tokio', 'London', 'Berlin'],
-      correctAnswer: 'London',
-    },
-    {
-      question: 'The highest mountain on the Earth?',
-      options: ['Fuji', 'Matterhorn', 'Kilimanjaro', 'Everest'],
-      correctAnswer: 'Everest',
-    },
-    {
-      question: 'What is the population of the Earth?',
-      options: ['4 billion', '6 billion', 'more than 8 billion'],
-      correctAnswer: 'more than 8 billion',
-    },
-    {
-      question: 'What is the biggest country of Europe?',
-      options: ['France', 'Sweden', 'Italy', 'Ukraine'],
-      correctAnswer: 'Ukraine',
-    },
-  ];
+  const { questions } = useContext(QuestAnswContext);
 
   const [indexOfObj, setIndexofObj] = useState(0);
   const [clickedButton, setClickedButton] = useState(null);
