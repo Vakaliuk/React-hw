@@ -8,7 +8,7 @@ export default function Questions() {
   const [indexOfObj, setIndexofObj] = useState(0);
   const [clickedButton, setClickedButton] = useState(null);
   const [score, setScore] = useState(0);
-  const [lenghtOfQuiz, setLengthOfQuiz] = useState(questions.length);
+  const lenghtOfQuiz = questions.length;
 
   function nextQuestion() {
     setIndexofObj((prevIndex) => prevIndex + 1);
@@ -48,9 +48,7 @@ export default function Questions() {
   function ifCorrect() {
     if (clickedButton === questions[indexOfObj].correctAnswer) {
       setScore((prevScore) => prevScore + 1);
-      console.log('Correct');
     } else if (clickedButton !== null) {
-      console.log('Incorrect');
     }
   }
 
