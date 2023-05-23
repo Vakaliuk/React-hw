@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { useContext } from 'react';
-import { QuestAnswContext } from '../context/index.js';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  updateScore,
+  nextQuestion,
+  selectOption,
+  resetQuiz,
+} from '../redux-components/actions';
 
-export default function Questions() {
-  const { questions } = useContext(QuestAnswContext);
+export default function Questions({ propsQuestions }) {
+  const dispatch = useDispatch();
+  const { indexOfObj, clickedButton, score } = useSelector((state) => state);
 
-  const [indexOfObj, setIndexofObj] = useState(0);
-  const [clickedButton, setClickedButton] = useState(null);
-  const [score, setScore] = useState(0);
-  const lenghtOfQuiz = questions.length;
-
-  function nextQuestion() {
-    setIndexofObj((prevIndex) => prevIndex + 1);
-  }
+  const lenghtOfQuiz = propsQuestions.length;
 
   function nextStep() {
-    if (indexOfObj < questions.length) {
+    if (indexOfObj < propsQuestions.length) {
       return (
         <div className="question">
-          <h2>{questions[indexOfObj].question}</h2>
+          <h2>{propsQuestions[indexOfObj].question}</h2>
           <div className="options">{renderOptions()}</div>
         </div>
       );
@@ -35,25 +34,26 @@ export default function Questions() {
   }
 
   function handleButtonClick(buttonId) {
-    setClickedButton(buttonId);
+    dispatch(selectOption(buttonId));
   }
 
   useEffect(() => {
     if (clickedButton !== null) {
       ifCorrect();
-      nextQuestion();
+      dispatch(nextQuestion());
     }
-  }, [clickedButton]);
+  }, [clickedButton, dispatch]);
 
   function ifCorrect() {
-    if (clickedButton === questions[indexOfObj].correctAnswer) {
-      setScore((prevScore) => prevScore + 1);
+    if (clickedButton === propsQuestions[indexOfObj].correctAnswer) {
+      const updatedScore = score + 1;
+      dispatch(updateScore(updatedScore));
     } else if (clickedButton !== null) {
     }
   }
 
   function renderOptions() {
-    return questions[indexOfObj].options.map((element, index) => (
+    return propsQuestions[indexOfObj].options.map((element, index) => (
       <div key={index} className="question">
         <button
           onClick={() => {
@@ -79,9 +79,7 @@ export default function Questions() {
   }
 
   function tryAgain() {
-    setScore((prevScore) => (prevScore = 0));
-    setIndexofObj((prevIndex) => (prevIndex = 0));
-    nextStep();
+    dispatch(resetQuiz());
   }
 
   return <>{nextStep()}</>;
